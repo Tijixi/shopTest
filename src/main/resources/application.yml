@@ -1,0 +1,43 @@
+server:
+    port: 8080
+spring:
+  datasource:
+    name: db
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/test?useLegacyDatetimeCode=false&serverTimezone=Australia/Sydney&useSSL=false
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.jdbc.Driver
+    minIdle: 5
+    maxActive: 100
+    initialSize: 10
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 50
+    removeAbandoned: true
+    filters: stat
+  jpa:
+    database: MySQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+  freemarker:
+    template-loader-path: classpath:/templates/
+    cache: false
+    check-template-location: true
+    charset: utf-8
+    content-type: text/html
+    suffix: .ftl
+
+mybatis:
+     typeAliasesPackage: com.example.productsys.dao
+     mapperScanPackage: com.example.productsys.dao
+     mapperLocations: "classpath:/mapper/*.xml"
+     configLocation: "classpath:/mybatis-config.xml"
